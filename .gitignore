@@ -25,4 +25,4 @@ dist-ssr
 *.package.json
 *.package.json
 *.package-lock.json
-./Carousel/img
+*./Components/Carousel/img
