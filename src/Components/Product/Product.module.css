@@ -1,22 +1,27 @@
-.card_container{
+.card_container {
     width: 250px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
     color: black;
     text-decoration: none;
     position: relative;
+    box-sizing: border-box; /* Add this line */
+    overflow: hidden; /* Add this line to handle overflow issues */
 }
-.card_container:hover .button{
+
+.card_container:hover .button {
     display: block;
 }
-.card_container img{
+
+.card_container img {
     padding: 10px;
     width: 100%;
     height: 200px;
     object-fit: contain;
 }
+
 .button {
-    display:none;
+    display: none;
     padding: 5px 10px;
     font-weight: 700;
     border: none;
@@ -29,10 +34,12 @@
     bottom: 0;
     left: 0;
 }
+
 .button:hover {
     background-color: var(--primary-shade);
 }
-.rating{
+
+.rating {
     display: flex;
     align-items: center;
     padding: 10px 0px;
@@ -40,13 +47,13 @@
 
 .products_container {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Increase minmax value */
     max-width: 1450px;
-    margin:  100px auto 100px auto;
-    gap:  50px;
+    margin: 100px auto;
+    gap: 50px;
     justify-items: center;
-
 }
+
 .products_container section {
     margin: 0 auto;
 }
@@ -57,10 +64,12 @@
     display: flex;
     gap: 50px;
     width: 100%;
+    flex-wrap: wrap; /* Add this line */
+    align-items: center; /* Add this line to vertically center items */
 }
 
 .product__flexed h3 {
-    padding : 20px 0px;
+    padding: 20px 0px;
 }
 
 .product__flexed .button {
@@ -69,17 +78,20 @@
     width: 150px;
     margin-right: 40px;
 }
-.product__flexed{
+
+.product__flexed {
     height: 50vh;
 }
+
 .product__flexed img {
     width: 300px !important;
     height: auto;
 }
 
-@media screen and (max-width:  768px){
+@media screen and (max-width: 768px) {
     .product__flexed {
         display: flex;
         flex-direction: column;
+        height: auto; /* Change this to auto to prevent fixed height */
     }
 }

@@ -159,39 +159,53 @@
   .lower_container {
     background-color: #232f3e;
     color: white;
-  }
-  .lower_container ul {
+    padding: 10px 20px; /* Add padding for better spacing */
+}
+
+.lower_container ul {
     display: flex;
     list-style: none;
-    gap: 5px;
-  }
+    gap: 10px; /* Increase gap for more spacing */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: space-around; /* Center the items */
+}
 
-  .lower_container ul li {
+.lower_container ul li {
     padding: 8px;
-  }
-  .lower_container ul li:first-child {
+    cursor: pointer; /* Change cursor to pointer */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.lower_container ul li:first-child {
     display: flex;
-    gap: 2px;
+    gap: 5px;
     align-items: center;
-  }
-  .lower_container ul li:hover {
+}
+
+.lower_container ul li:hover {
     border: 1px solid white;
     border-radius: 3px;
-  }
+}
 
-  /* Responsiveness for Header  */
-  @media screen and (max-width: 576px) {
+/* Remove the rule that hides li elements on small screens */
+@media screen and (max-width: 576px) {
     .header_container {
-      display: flex;
-      flex-direction: column !important;
-      height: auto;
+        display: flex;
+        flex-direction: column !important;
+        height: auto;
     }
-  
-    .lower_container ul li:not(:first-child) {
-      display: none;
-    }
-  
+
+    /* Remove this rule to make sure all list items are shown */
+    /* .lower_container ul li:not(:first-child) {
+        display: none;
+    } */
+
     .language {
-      display: none;
+        display: none;
     }
-  }
+
+    .lower_container ul {
+        justify-content: space-evenly; /* Adjust alignment */
+        gap: 5px; /* Reduce gap for small screens */
+    }
+}

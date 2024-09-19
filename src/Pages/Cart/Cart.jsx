@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 import { Type } from "../../Utility/action.type";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+
+
+
 function Cart() {
   const [{ basket, user }, dispatch] = useContext(DataContext);
   const total = basket?.reduce((amount, item) => {

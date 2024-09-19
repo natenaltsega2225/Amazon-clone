@@ -1,11 +1,15 @@
 .category {
     height: 350px;
-    width: 350px;
+    width: 100%; /* Ensure the category takes full width of its grid cell */
+    max-width: 350px; /* Keep a max-width to prevent overflow */
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0,0 ,0.2)
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Include padding and border in the width */
+    padding: 10px; /* Add some padding for better spacing */
+    overflow: hidden; /* Prevent overflow of content */
 }
 
-.category img{
+.category img {
     width: 100%;
     object-fit: contain;
     max-height: 250px;
@@ -14,24 +18,29 @@
 
 .category a {
     text-decoration: none;
-    color: rgb(35,35,35);
+    color: rgb(35, 35, 35);
 }
+
 .category h2, .category p {
     padding: 5px;
     margin-left: 15px;
 }
+
 .category p {
     font-size: 12px;
     font-weight: bold;
-    color: rgb(9,132,209);
+    color: rgb(9, 132, 209);
 }
 
 .category__container {
-    position: relative;
-    margin-top: -10%;
+    margin-top: 20px; /* Adjust margin for spacing */
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexible grid layout */
+    gap: 20px; /* Increase gap between items */
     place-items: center;
-
+    padding: 20px; /* Add padding around the container */
+    box-sizing: border-box; /* Include padding in the width */
+    width: 100%;
+    max-width: 1400px; /* Adjust max width to fit the container */
+    margin: 0 auto; /* Center the container */
 }
