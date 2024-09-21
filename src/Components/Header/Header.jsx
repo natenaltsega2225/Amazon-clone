@@ -7,19 +7,18 @@ import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
 
-
-
 const Header = () => {
   const [{ basket }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
+
   return (
     <>
       <section className={classes.fixed}>
         <section>
           <div className={classes.header_container}>
-            {/* logo section */}
+            {/* Logo section */}
             <div className={classes.logo_container}>
               <Link to="/">
                 <img
@@ -28,27 +27,31 @@ const Header = () => {
                 />
               </Link>
 
-              {/* delivery */}
+              {/* Delivery */}
               <div className={classes.delivery}>
                 <span>
                   <SlLocationPin />
                 </span>
                 <div>
                   <p>Delivered to</p>
-                  <span>United States</span>
+                  <span>USA</span>
                 </div>
               </div>
             </div>
-            {/* search bar */}
+
+            {/* Search bar */}
             <div className={classes.search}>
               <select name="" id="">
                 <option value="">All</option>
               </select>
-              <input type="text" />
-              <BsSearch size={25} />
+              <input type="text" placeholder="Search Amazon"/>
+              <div className={classes.searchIcon}>
+              
+                <BsSearch size={25} />
+              </div>
             </div>
 
-            {/* other section */}
+            {/* Other section */}
             <div className={classes.order_container}>
               <Link to="/" className={classes.language}>
                 <img
