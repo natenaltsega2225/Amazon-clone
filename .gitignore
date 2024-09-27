@@ -26,3 +26,6 @@ dist-ssr
 *.package.json
 *.package-lock.json
 *./Components/Carousel/img
+.env
+node_modules/
+.firebaserc

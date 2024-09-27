@@ -6,12 +6,21 @@ import classes from "./Header.module.css";
 import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
+import { auth } from "../../Utility/firebase";
+import { Type } from "../../Utility/action.type"; // Import action types
 
 const Header = () => {
-  const [{ basket }, dispatch] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
+
+  const signOut = () => {
+    auth.signOut();
+    dispatch({
+      type: Type.EMPTY_BASKET, // Dispatch action to empty basket
+    });
+  };
 
   return (
     <>
@@ -34,7 +43,7 @@ const Header = () => {
                 </span>
                 <div>
                   <p>Delivered to</p>
-                  <span>USA</span>
+                  <span>Nashville,TN</span>
                 </div>
               </div>
             </div>
@@ -44,9 +53,8 @@ const Header = () => {
               <select name="" id="">
                 <option value="">All</option>
               </select>
-              <input type="text" placeholder="Search Amazon"/>
+              <input type="text" placeholder="Search Amazon" />
               <div className={classes.searchIcon}>
-              
                 <BsSearch size={25} />
               </div>
             </div>
@@ -58,19 +66,29 @@ const Header = () => {
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/383px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png"
                   alt=""
                 />
-
                 <select name="" id="">
                   <option value="">EN</option>
                 </select>
               </Link>
-              <Link to="/auth">
-                <p>Hello,Sign Inn</p>
-                <span>Account & Lists</span>
+              <Link to={!user && "/auth"}>
+                <div>
+                  {user ? (
+                    <>
+                      <p>Hello, {user?.email?.split("@")[0]}</p>
+                      <span onClick={signOut}>Sign Out</span>
+                    </>
+                  ) : (
+                    <>
+                      <p>Hello, Sign In</p>
+                      <span>Account & Lists</span>
+                    </>
+                  )}
+                </div>
               </Link>
 
               <Link to="/orders">
                 <p>Returns</p>
-                <span> & Orders</span>
+                <span>& Orders</span>
               </Link>
 
               <Link to="/cart" className={classes.cart}>
